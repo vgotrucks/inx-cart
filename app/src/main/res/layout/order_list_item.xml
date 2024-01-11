@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/offWhiteColor"
+    >
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/background_round_corners_white4dp"
+    android:padding="8dp"
+    android:layout_marginLeft="@dimen/dimen_8dp"
+    android:layout_marginRight="@dimen/dimen_8dp"
+    android:layout_marginBottom="2dp"
+    android:layout_marginTop="2dp">
+
+
+    <TextView
+        android:id="@+id/order_id_text"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="0dp"
+        android:fontFamily="@font/open_sans"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="ORDER567124"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/status_text"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="@dimen/dimen_10dp"
+        android:background="@drawable/background_cash"
+        android:fontFamily="@font/open_sans_light"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="Delivery Pending"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/order_amount_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/order_id_text"
+        android:fontFamily="@font/open_sans_light"
+        android:gravity="center"
+        android:paddingLeft="8dp"
+        android:layout_marginBottom="@dimen/dimen_4dp"
+        android:text="Invoice Amount - NA"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/order_on_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/order_amount_text"
+        android:fontFamily="@font/open_sans_light"
+        android:gravity="center"
+        android:paddingLeft="8dp"
+        android:layout_marginBottom="@dimen/dimen_4dp"
+        android:text="Ordered On -NA"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/expected_on_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/order_on_text"
+        android:fontFamily="@font/open_sans_light"
+        android:gravity="center"
+        android:paddingLeft="8dp"
+        android:layout_marginBottom="@dimen/dimen_4dp"
+        android:text="Expected Delivery -NA"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/receiver_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/expected_on_text"
+        android:fontFamily="@font/open_sans_light"
+        android:gravity="center"
+        android:paddingLeft="8dp"
+        android:layout_marginBottom="@dimen/dimen_4dp"
+        android:text="Receiver's Name - NA"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/mobile_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/receiver_name"
+        android:fontFamily="@font/open_sans_light"
+        android:gravity="center"
+        android:paddingLeft="8dp"
+        android:layout_marginBottom="@dimen/dimen_4dp"
+        android:text="Phone -NA"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+    <RelativeLayout
+        android:id="@+id/address_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mobile_number"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="@dimen/dimen_4dp"
+        android:layout_marginBottom="12dp">
+
+        <ImageView
+            android:id="@+id/img_address"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_destination_pin_light"
+            android:layout_centerVertical="true"/>
+
+        <TextView
+            android:id="@+id/delivery_address_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans_light"
+            android:gravity="top"
+            android:paddingLeft="8dp"
+            android:text="NA"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@id/img_address"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/saperator"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@+id/address_field"
+        android:background="@color/grayishBlue"/>
+
+    <TextView
+        android:id="@+id/order_button"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_30dp"
+        android:layout_below="@+id/saperator"
+        android:layout_marginBottom="@dimen/dimen_0dp"
+        android:layout_marginTop="@dimen/dimen_4dp"
+        android:background="@color/white"
+        android:text="See More Details >"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:textColor="@color/blueColor"
+        android:elevation="@dimen/dimen_0dp"/>
+
+</RelativeLayout>
+</RelativeLayout>

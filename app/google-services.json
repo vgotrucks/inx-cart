@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "451790774454",
+    "firebase_url": "https://buildo-app-default-rtdb.firebaseio.com",
+    "project_id": "buildo-app",
+    "storage_bucket": "buildo-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:451790774454:android:9233d5d0b6ada1d6418617",
+        "android_client_info": {
+          "package_name": "com.uniwaylabs.buildo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "451790774454-om5so8iiaa0er4d8664a38lp5nbj9976.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.uniwaylabs.buildo",
+            "certificate_hash": "6d3975202939b2489fdb4a35c5de849c8518bf72"
+          }
+        },
+        {
+          "client_id": "451790774454-ni4e4ja5a4pg9n8t6hq60mkermp501gm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqvaruae_mY2h7JmHJtp3RICUOok8Az7M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "451790774454-ni4e4ja5a4pg9n8t6hq60mkermp501gm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="170dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingTop="1dp"
+    android:background="@color/white"
+    >
+
+
+
+        <ImageView
+            android:id="@+id/item_image"
+            android:layout_width="140dp"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_margin="@dimen/dimen_8dp"
+            android:background="@drawable/background_circle_offwhite_10dp"
+            />
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/item_image"
+            app:layout_constraintTop_toTopOf="parent"
+            android:paddingTop="10dp"
+            android:paddingEnd="10dp"
+            android:paddingStart="10dp"
+            android:background="@color/transparent"
+            >
+
+            <TextView
+                android:id="@+id/text_item_name"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:textSize="20sp"
+                android:fontFamily="@font/open_sans"
+                android:text="Cement \nUltratech 500kg"
+                android:layout_alignParentTop="true"
+                android:textColor="@color/black"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentStart="true"
+                android:gravity="top"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_30dp"
+                android:orientation="horizontal"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/text_item_name"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/linear_layout_v1"
+
+                >
+                <TextView
+                    android:id="@+id/text_item_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textSize="25sp"
+                    android:fontFamily="@font/open_sans"
+                    android:text="₹ -"
+                    android:gravity="bottom"
+                    android:textColor="@color/black"
+                    />
+                <TextView
+                    android:id="@+id/text_item_market_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="bottom"
+                    android:textSize="15sp"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/open_sans"
+                    android:text="₹ -"
+                    android:textColor="@color/black"
+                    />
+                <TextView
+                    android:id="@+id/text_item_uom"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="bottom"
+                    android:textSize="15sp"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/open_sans"
+                    android:text="- OFF"
+                    android:textColor="@color/redColor"
+                    />
+
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/add_to_cart_button"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:text="Add to cart"
+                android:textColor="@color/appthemeColor"
+                android:background="@drawable/background_cart_button"
+                android:fontFamily="@font/open_sans"
+                android:textStyle="bold"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginStart="16dp"
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="8dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_below="@+id/linear_layout_v1"
+                />
+
+        </RelativeLayout>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/progressbarhistory"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:gravity="center"
+        app:lottie_autoPlay="true"
+        app:lottie_speed="1"
+        app:lottie_colorFilter="@color/dark_blue"
+        android:layout_centerInParent="true"
+        app:lottie_fileName="progress.json"
+        app:lottie_loop="true"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/text_view_result_h"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Adding to cart..."
+        android:fontFamily="@font/open_sans"
+        app:layout_constraintTop_toBottomOf="@+id/progressbarhistory"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/black"
+        android:visibility="gone"
+        android:layout_centerHorizontal="true"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/offWhiteColor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

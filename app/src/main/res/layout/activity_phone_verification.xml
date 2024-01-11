@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+>
+
+    <TextView
+        android:id="@+id/tvEnterYourPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/open_sans_light"
+        android:text="Verify your phone"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="25sp"
+        android:textColor="@color/white"
+        android:paddingTop="60dp"
+        android:background="@color/navbarColor"
+        android:paddingStart="@dimen/dimen_20dp"
+        android:paddingBottom="@dimen/dimen_40dp"
+/>
+
+    <ImageView
+        android:id="@+id/poster2_imageview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srcCompat="@drawable/welcome_img"
+        android:layout_weight="0.4"
+        android:background="@drawable/background_purple_round"
+
+        />
+
+
+    <LinearLayout
+        android:id="@+id/linear_layout_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:layout_marginTop="@dimen/dimen_4dp"
+        >
+        <LinearLayout
+            android:id="@+id/linear_layout_phone_auth"
+            android:layout_marginTop="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="@dimen/dimen_10dp"
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/dimen_20dp">
+
+            <com.rilixtech.widget.countrycodepicker.CountryCodePicker
+                android:id="@+id/ccp"
+                android:layout_width="112dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/phone"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_50dp"
+                android:layout_gravity="center"
+                android:autofillHints="phone"
+                android:layout_marginLeft="@dimen/dimen_10dp"
+                android:ems="5"
+                android:fontFamily="@font/open_sans"
+                android:layout_marginRight="20dp"
+                android:hint="phone"
+                android:inputType="phone"
+                android:maxLength="10"
+                android:paddingLeft="@dimen/dimen_10dp"
+                android:background="@drawable/edit_text_layout"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                />
+
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.9"
+        android:background="@color/white"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="vertical"
+        android:layout_gravity="bottom"
+        android:gravity="bottom"
+        android:background="@color/white"
+        >
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/phoneNextbutton"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="30dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/background_next_button"
+            android:fontFamily="@font/open_sans_light"
+            android:text="Generate OTP"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/navbarColor"
+    android:fitsSystemWindows="true">
+
+    <!--        <TextView-->
+    <!--            android:id="@+id/logoImgId"-->
+    <!--            android:layout_width="150dp"-->
+    <!--            android:layout_height="150dp"-->
+    <!--            android:textSize="100sp"-->
+    <!--            android:text="@string/tvv"-->
+    <!--            android:textColor="@color/white"-->
+    <!--            android:gravity="center"-->
+    <!--            android:fontFamily="@font/open_sans_light"-->
+    <!--            android:background="@drawable/background_logo"-->
+    <!--            android:elevation="8dp"-->
+    <!--            android:layout_centerInParent="true"-->
+    <!--            android:layout_margin="20dp"/>-->
+
+<!--    <com.airbnb.lottie.LottieAnimationView-->
+<!--        android:id="@+id/animation_view"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_centerInParent="true"-->
+<!--        app:lottie_autoPlay="true"-->
+<!--        app:lottie_speed="1.5"-->
+<!--        app:lottie_fileName="splash_screen_truck.json"-->
+<!--        app:lottie_loop="true" />-->
+
+    <ImageView
+        android:id="@+id/logonameId"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_centerInParent="true"
+        android:background="@color/navbarColor"
+        android:gravity="bottom"
+        android:elevation="@dimen/dimen_0dp"
+        android:layout_marginStart="@dimen/dimen_10dp"
+        android:src="@drawable/splash_image"/>
+
+    <TextView
+        android:id="@+id/tagnameId"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/open_sans_light"
+        android:gravity="center"
+        android:textColor="@color/white" />
+
+
+</RelativeLayout>

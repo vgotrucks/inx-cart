@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/details_card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/dimen_10dp"
+    android:background="@color/white">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dimen_40dp"
+    android:id="@+id/total_amount"
+    android:gravity="center_vertical">
+
+
+    <TextView
+        android:id="@+id/total_text"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:textSize="23sp"
+        android:fontFamily="@font/open_sans"
+        android:text="Grand Total"
+        android:textColor="@color/black"
+        />
+
+    <TextView
+        android:id="@+id/total_amount_text"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:textSize="23sp"
+        android:fontFamily="@font/open_sans"
+        android:text="₹ -"
+        android:textColor="@color/black"
+        android:layout_toEndOf="@+id/total_text"
+        android:textAlignment="textEnd"
+        android:textStyle="bold"
+        />
+
+
+</RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_25dp"
+        android:gravity="center_vertical"
+        android:id="@+id/sv_container"
+        android:layout_below="@+id/total_amount"
+        android:layout_marginBottom="@dimen/dimen_8dp">
+
+
+        <TextView
+            android:id="@+id/sv_text"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:textSize="18sp"
+            android:fontFamily="@font/open_sans"
+            android:text="Congratulations!, you saved"
+            android:textColor="@color/systemGreenColor"
+            />
+
+        <TextView
+            android:id="@+id/saved_text"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:textSize="18sp"
+            android:fontFamily="@font/open_sans"
+            android:textColor="@color/systemGreenColor"
+            android:layout_toEndOf="@+id/sv_text"
+            android:textAlignment="textEnd"
+            android:textStyle="bold"
+            />
+
+
+    </RelativeLayout>
+    <TextView
+        android:id="@+id/note_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:fontFamily="@font/open_sans"
+        android:text="*Note - Grand total includes GST and other taxes but excludes delivery charges."
+        android:textColor="@color/gray_444444"
+        android:layout_below="@+id/sv_container"
+        android:layout_marginBottom="@dimen/dimen_8dp"
+        />
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_40dp"
+        android:id="@+id/payment_mode"
+        android:layout_below="@id/note_text"
+        android:gravity="center_vertical"
+        android:layout_marginTop="@dimen/dimen_4dp"
+        android:layout_marginBottom="@dimen/dimen_4dp"
+       >
+
+
+        <TextView
+            android:id="@+id/payment_mode_text"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:textSize="18sp"
+            android:fontFamily="@font/open_sans"
+            android:text="Payment Mode"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/payment_text"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/payment_text"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:textSize="18sp"
+            android:fontFamily="@font/open_sans"
+            android:text="Cash On Delivery"
+            android:textColor="@color/black"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@drawable/background_round_corners_lightgreen30dp"
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+<androidx.appcompat.widget.AppCompatButton
+    android:id="@+id/order_button"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dimen_50dp"
+    android:text="Buy Now"
+    android:textSize="16sp"
+    android:textColor="@color/white"
+    android:background="@drawable/background_next_button"
+    android:layout_below="@+id/payment_mode"
+    android:layout_marginTop="16dp"
+    />
+</RelativeLayout>
