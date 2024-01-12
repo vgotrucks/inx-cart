@@ -76,7 +76,7 @@ class HistoryListMaterialItemAdapter(
             listItem = model
             val options = RequestOptions().error(R.drawable.ic_placeholder_image_48)
                 .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
-                .transform(RoundedCorners(10), CenterCrop())
+                .centerCrop()
             Glide.with(context).load(model.imageURLs?.first()).apply(options).into(imageView)
             text.text = model.itemName
             itemPriceTV?.text = "${model.itemPrice}"

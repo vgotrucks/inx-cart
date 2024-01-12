@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.uniwaylabs.buildo.R
 import com.uniwaylabs.buildo.firebaseDatabase.DatabaseModels.CategoryDataWithItemsModel
+import com.uniwaylabs.buildo.firebaseDatabase.DatabaseModels.MaterialListItemModel
 import com.uniwaylabs.buildo.ui.dashboard.CartList.CartListItemModel
 import com.uniwaylabs.buildo.ui.dashboard.CartList.ViewHolders.CartListActionItemViewHolder
 import com.uniwaylabs.buildo.ui.dashboard.CartList.ViewHolders.CartListSectionViewHolder
@@ -30,8 +31,9 @@ class HistoryListItemAdapter(var context: Context, var list: Array<CategoryDataW
         }
         val viewHolder = holder as HistoryListSectionViewHolder
         val model = list[position]
-        var items = model?.subCategories?.flatMap { (it?.value?.material_items ?: emptyMap()).values.asIterable() }
-        items?.toMutableList()?.addAll(model?.material_items?.values?.toTypedArray() ?: emptyArray())
+        var items: ArrayList<MaterialListItemModel> =
+            (model?.subCategories?.flatMap { (it?.value?.material_items ?: emptyMap()).values.asIterable() } ?: ArrayList()) as ArrayList<MaterialListItemModel>
+        items?.addAll((model?.material_items ?: emptyMap()).values?.toMutableList() ?: ArrayList())
         viewHolder.setListData(items?.toTypedArray())
         viewHolder.listMaterialItemInterface = listMaterialItemInterface
     }

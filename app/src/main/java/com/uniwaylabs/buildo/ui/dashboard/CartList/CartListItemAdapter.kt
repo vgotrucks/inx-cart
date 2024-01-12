@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.uniwaylabs.buildo.R
 import com.uniwaylabs.buildo.firebaseDatabase.DatabaseModels.CategoryDataModel
 import com.uniwaylabs.buildo.firebaseDatabase.DatabaseModels.CategoryDataWithItemsModel
+import com.uniwaylabs.buildo.firebaseDatabase.DatabaseModels.MaterialListItemModel
 import com.uniwaylabs.buildo.ui.dashboard.CartList.ViewHolders.CartListActionItemViewHolder
 import com.uniwaylabs.buildo.ui.dashboard.CartList.ViewHolders.CartListActionItemViewInterface
 import com.uniwaylabs.buildo.ui.dashboard.CartList.ViewHolders.CartListSectionViewHolder
@@ -40,8 +41,9 @@ class CartListItemAdapter(var context: Context, var list: Array<CategoryDataWith
             var amount: Double = 0.0
             var originalAmount = 0.0
             for(model in list ?: emptyArray()){
-                var items = model?.subCategories?.flatMap { (it?.value?.material_items ?: emptyMap()).values.asIterable() }
-                items?.toMutableList()?.addAll(model?.material_items?.values?.toTypedArray() ?: emptyArray())
+                var items: ArrayList<MaterialListItemModel> =
+                    (model?.subCategories?.flatMap { (it?.value?.material_items ?: emptyMap()).values.asIterable() } ?: ArrayList()) as ArrayList<MaterialListItemModel>
+                items?.addAll((model?.material_items ?: emptyMap()).values?.toMutableList() ?: ArrayList())
                 for(item in items?.toTypedArray() ?: emptyArray()){
                     amount += ((item.itemPrice ?: 0.0) * (item.quantity ?: 1.0))
                     originalAmount += ((item.marketPrice ?: 0.0) * (item.quantity ?: 1.0))
@@ -54,8 +56,9 @@ class CartListItemAdapter(var context: Context, var list: Array<CategoryDataWith
         }
         val viewHolder = holder as CartListSectionViewHolder
         val model = list[position - 1]
-        var items = model?.subCategories?.flatMap { (it?.value?.material_items ?: emptyMap()).values.asIterable() }
-        items?.toMutableList()?.addAll(model?.material_items?.values?.toTypedArray() ?: emptyArray())
+        var items: ArrayList<MaterialListItemModel> =
+            (model?.subCategories?.flatMap { (it?.value?.material_items ?: emptyMap()).values.asIterable() } ?: ArrayList()) as ArrayList<MaterialListItemModel>
+        items?.addAll((model?.material_items ?: emptyMap()).values?.toMutableList() ?: ArrayList())
         viewHolder.setListData(items?.toTypedArray())
         viewHolder.cartListMaterialItemInterface = cartListMaterialItemInterface
     }

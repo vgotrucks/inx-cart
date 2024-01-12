@@ -11,7 +11,7 @@ public class BaseAppCompactActivityJava extends AppCompatActivity {
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(newBase);
         Configuration configuration = new Configuration(newBase.getResources().getConfiguration());
-        configuration.fontScale = 1.0f;
+        configuration.fontScale = 0.9f;
         applyOverrideConfiguration(configuration);
     }
 }

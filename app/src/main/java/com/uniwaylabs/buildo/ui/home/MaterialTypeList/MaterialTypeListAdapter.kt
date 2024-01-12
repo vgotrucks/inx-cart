@@ -69,7 +69,7 @@ class MaterialTypeListAdapter(
         fun setImage(url: String?){
             val options = RequestOptions().error(R.drawable.ic_placeholder_image_48)
                 .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
-                .transform(RoundedCorners(8), CenterCrop())
+                .centerCrop()
             context?.let { Glide.with(it).load(url ?: "").apply(options).into(imageView) }
         }
         override fun onClick(view: View) {

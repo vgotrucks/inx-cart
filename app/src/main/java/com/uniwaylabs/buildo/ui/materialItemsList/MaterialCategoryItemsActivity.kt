@@ -46,7 +46,7 @@ class MaterialCategoryItemsActivity: MaterialItemsListActivity() {
 
             var items: ArrayList<MaterialListItemModel> =
                 (mData?.subCategories?.flatMap { (it?.value?.material_items ?: emptyMap()).values.asIterable() } ?: ArrayList()) as ArrayList<MaterialListItemModel>
-            items?.addAll((mData?.material_items ?: emptyMap()).values?.asIterable() ?: ArrayList())
+            items?.addAll((mData?.material_items ?: emptyMap()).values?.toMutableList() ?: ArrayList())
             if(items.isNullOrEmpty()){
                 showEmptyState(true)
                 adapter?.updateListData(emptyArray())

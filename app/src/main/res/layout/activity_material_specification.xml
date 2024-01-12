@@ -267,7 +267,7 @@
         android:gravity="center"
         app:lottie_autoPlay="true"
         app:lottie_speed="1"
-        app:lottie_colorFilter="@color/systemGreenColor"
+        app:lottie_colorFilter="@color/appthemeColor"
         android:layout_centerInParent="true"
         app:lottie_fileName="add_to_cart.json"
         app:lottie_loop="true"
@@ -276,7 +276,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:elevation="@dimen/dimen_10dp"
+        android:elevation="20dp"
         />
 
     <TextView

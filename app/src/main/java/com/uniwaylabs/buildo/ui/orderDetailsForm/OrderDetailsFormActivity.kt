@@ -23,6 +23,7 @@ import com.uniwaylabs.buildo.ToastMessages
 import com.uniwaylabs.buildo.firebaseDatabase.Database.AdminDB.AdminDatabase
 import com.uniwaylabs.buildo.firebaseDatabase.Database.UserDB.UserDatabase
 import com.uniwaylabs.buildo.firebaseDatabase.DatabaseModels.CategoriesListWithItemDataModel
+import com.uniwaylabs.buildo.firebaseDatabase.DatabaseModels.MaterialListItemModel
 import com.uniwaylabs.buildo.firebaseDatabase.DatabaseModels.OrderItemDetailsDataModel
 import com.uniwaylabs.buildo.firebaseDatabase.DatabaseModels.UserOrderDetails
 import com.uniwaylabs.buildo.firebaseDatabase.DatabaseUrls.DatabaseUrls
@@ -109,8 +110,9 @@ class OrderDetailsFormActivity: BaseAppCompactActivity() {
             var amount: Double = 0.0
             var originalAmount = 0.0
             for(model in list ?: emptyArray()){
-                var items = model?.subCategories?.flatMap { (it?.value?.material_items ?: emptyMap()).values.asIterable() }
-                items?.toMutableList()?.addAll(model?.material_items?.values?.toTypedArray() ?: emptyArray())
+                var items: ArrayList<MaterialListItemModel> =
+                    (model?.subCategories?.flatMap { (it?.value?.material_items ?: emptyMap()).values.asIterable() } ?: ArrayList()) as ArrayList<MaterialListItemModel>
+                items?.addAll((model?.material_items ?: emptyMap()).values?.toMutableList() ?: ArrayList())
                 for(item in items?.toTypedArray() ?: emptyArray()){
                     amount += ((item.itemPrice ?: 0.0) * (item.quantity ?: 1.0))
                     originalAmount += ((item.marketPrice ?: 0.0) * (item.quantity ?: 1.0))

@@ -70,7 +70,7 @@ class MaterialListL2Adapter(
             textView.text = model?.title
             val options = RequestOptions().error(R.drawable.ic_placeholder_image_48)
                 .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
-                .transform(RoundedCorners(10), CenterCrop())
+                .centerCrop()
             context?.let { Glide.with(it).load(model?.imageUrl).apply(options).into(imageView) }
         }
 
