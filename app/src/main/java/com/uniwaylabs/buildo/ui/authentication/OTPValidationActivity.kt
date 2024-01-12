@@ -27,6 +27,7 @@ import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.FirebaseDatabase
+import com.uniwaylabs.buildo.BaseAppCompactActivity
 import com.uniwaylabs.buildo.LocalDatabase.BDSharedPreferences
 import com.uniwaylabs.buildo.R
 import com.uniwaylabs.buildo.ToastMessages
@@ -44,7 +45,7 @@ import java.util.Date
 import java.util.Locale
 import java.util.concurrent.TimeUnit
 
-class OTPValidationActivity : AppCompatActivity() {
+class OTPValidationActivity : BaseAppCompactActivity() {
     private val mResendToken: PhoneAuthProvider.ForceResendingToken? = null
     private var verificationId: String? = null
     private var mAuth: FirebaseAuth? = null

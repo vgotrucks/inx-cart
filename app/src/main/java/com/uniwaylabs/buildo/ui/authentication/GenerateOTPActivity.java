@@ -23,10 +23,11 @@ import android.widget.RelativeLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
+import com.uniwaylabs.buildo.BaseAppCompactActivityJava;
 import com.uniwaylabs.buildo.R;
 
 
-public class GenerateOTPActivity extends AppCompatActivity{
+public class GenerateOTPActivity extends BaseAppCompactActivityJava {
 
     AppCompatButton sendButton;
     EditText phoneNumber;

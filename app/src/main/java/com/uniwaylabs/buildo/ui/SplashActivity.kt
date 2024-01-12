@@ -2,6 +2,7 @@ package com.uniwaylabs.buildo.ui
 
 import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
@@ -11,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuth.AuthStateListener
 import com.google.firebase.auth.FirebaseUser
+import com.uniwaylabs.buildo.BaseAppCompactActivity
 import com.uniwaylabs.buildo.LocalDatabase.BDSharedPreferences
 import com.uniwaylabs.buildo.R
 import com.uniwaylabs.buildo.firebaseDatabase.Database.AdminDB.AdminDatabase
@@ -25,7 +27,7 @@ import com.uniwaylabs.buildo.firebaseDatabase.Repositories.RepositoryData
 import com.uniwaylabs.buildo.ui.authentication.GenerateOTPActivity
 import com.uniwaylabs.buildo.ui.authentication.SignInActivity
 
-class SplashActivity : AppCompatActivity() {
+class SplashActivity : BaseAppCompactActivity() {
 
     private var mAuthStateListener: AuthStateListener? = null
     private var mAuth: FirebaseAuth? = null
@@ -127,4 +129,5 @@ class SplashActivity : AppCompatActivity() {
     companion object {
         private const val SPLASH_TIME = 1000
     }
+
 }

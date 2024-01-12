@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.airbnb.lottie.LottieAnimationView
+import com.uniwaylabs.buildo.BaseAppCompactActivity
 import com.uniwaylabs.buildo.LocalDatabase.BDSharedPreferences
 import com.uniwaylabs.buildo.R
 import com.uniwaylabs.buildo.firebaseDatabase.Database.AdminDB.AdminDatabase
@@ -27,7 +28,7 @@ import com.uniwaylabs.buildo.ui.home.MaterialList.ViewHolders.MaterialListL3Item
 import com.uniwaylabs.buildo.ui.materialSpecification.MaterialSpecificationActivity
 import java.io.Serializable
 
-open class MaterialItemsListActivity : AppCompatActivity(), MaterialListL3ItemInterface {
+open class MaterialItemsListActivity : BaseAppCompactActivity(), MaterialListL3ItemInterface {
 
     var adapter: MaterialListL3Adapter? = null
     private val materialSpecialityActivity = registerForActivityResult(MaterialSpecificationActivity.Contract(), {})

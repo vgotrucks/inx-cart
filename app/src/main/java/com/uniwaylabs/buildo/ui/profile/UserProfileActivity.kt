@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.uniwaylabs.buildo.BaseAppCompactActivity
 import com.uniwaylabs.buildo.LocalDatabase.BDSharedPreferences
 import com.uniwaylabs.buildo.R
 import com.uniwaylabs.buildo.firebaseDatabase.Database.AdminDB.AdminDatabase
@@ -13,7 +14,7 @@ import com.uniwaylabs.buildo.firebaseDatabase.DatabaseModels.DrawerMenuDataModel
 import com.uniwaylabs.buildo.firebaseDatabase.DatabaseModels.GETOrdersListItemsModel
 import com.uniwaylabs.buildo.firebaseDatabase.DatabaseUrls.DatabaseUrls
 
-class UserProfileActivity: AppCompatActivity() {
+class UserProfileActivity: BaseAppCompactActivity() {
 
     var addressTV: TextView? = null
     var mobileNumber: TextView? = null
@@ -47,4 +48,5 @@ class UserProfileActivity: AppCompatActivity() {
             addressTV?.text = mData?.address ?: "Not found"
         }
     }
+
 }

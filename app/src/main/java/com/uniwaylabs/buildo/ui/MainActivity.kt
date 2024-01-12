@@ -1,11 +1,14 @@
 package com.uniwaylabs.buildo.ui
 
+import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.uniwaylabs.buildo.BaseAppCompactActivity
 import com.uniwaylabs.buildo.LocalDatabase.BDSharedPreferences
 import com.uniwaylabs.buildo.R
 import com.uniwaylabs.buildo.VTAppUpdate
@@ -19,7 +22,7 @@ import com.uniwaylabs.buildo.ui.profile.UserProfileActivity
 import com.uniwaylabs.buildo.utility.DatabaseDeserializer
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseAppCompactActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private var updateAppInstance: VTAppUpdate? = null
@@ -84,4 +87,5 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+
 }

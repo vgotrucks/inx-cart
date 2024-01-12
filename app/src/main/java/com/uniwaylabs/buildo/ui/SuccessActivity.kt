@@ -1,12 +1,15 @@
 package com.uniwaylabs.buildo.ui
 
+import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.uniwaylabs.buildo.BaseAppCompactActivity
 import com.uniwaylabs.buildo.R
 
-class SuccessActivity : AppCompatActivity() {
+class SuccessActivity : BaseAppCompactActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,4 +20,5 @@ class SuccessActivity : AppCompatActivity() {
             finishAffinity()
         }
     }
+
 }

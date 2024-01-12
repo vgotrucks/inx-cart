@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.airbnb.lottie.LottieAnimationView
+import com.uniwaylabs.buildo.BaseAppCompactActivity
 import com.uniwaylabs.buildo.LocalDatabase.BDSharedPreferences
 import com.uniwaylabs.buildo.R
 import com.uniwaylabs.buildo.firebaseDatabase.Database.AdminDB.AdminDatabase
@@ -29,7 +30,7 @@ import java.io.Serializable
 import java.util.Date
 
 @Suppress("DEPRECATION")
-class HistoryListActivity : AppCompatActivity(), HistoryListItemMaterialInterface {
+class HistoryListActivity : BaseAppCompactActivity(), HistoryListItemMaterialInterface {
 
     private var adapter: HistoryListItemAdapter? = null
     var progressBar: LottieAnimationView? = null

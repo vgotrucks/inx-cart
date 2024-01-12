@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
+    android:layout_height="160dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     android:layout_margin="@dimen/dimen_4dp">
@@ -32,10 +32,10 @@
     <TextView
         android:id="@+id/text_item_name"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:textSize="20sp"
+        android:layout_height="55dp"
+        android:textSize="19sp"
         android:fontFamily="@font/open_sans"
-        android:text="Pipes"
+        android:text="Pipes\ngggg"
         android:paddingStart="@dimen/dimen_4dp"
         android:paddingEnd="@dimen/dimen_4dp"
         android:textColor="@color/white"

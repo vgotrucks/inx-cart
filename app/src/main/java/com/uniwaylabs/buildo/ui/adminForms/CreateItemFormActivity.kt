@@ -19,6 +19,7 @@ import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.FragmentActivity
 import com.airbnb.lottie.LottieAnimationView
 import com.uniwaylabs.buildo.BDDialogs.VTDialogViews
+import com.uniwaylabs.buildo.BaseFragmentActivity
 import com.uniwaylabs.buildo.LocalDatabase.BDSharedPreferences
 import com.uniwaylabs.buildo.R
 import com.uniwaylabs.buildo.ToastMessages
@@ -40,7 +41,7 @@ import java.util.Date
 public const val ACTIVITY_DATA = "ACTIVITY_DATA"
 public const val ACTIVITY_RESULT_CODE = "ACTIVITY_RESULT_CODE"
 
-class CreateItemFormActivity :  FragmentActivity(), ImageSliderFragmentInterface {
+class CreateItemFormActivity :  BaseFragmentActivity(), ImageSliderFragmentInterface {
 
     private var et_pincode:EditText? = null
     private var et_category: TextView? = null

@@ -21,6 +21,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
+import com.uniwaylabs.buildo.BaseAppCompactActivityJava;
 import com.uniwaylabs.buildo.LocalDatabase.BDSharedPreferences;
 import com.uniwaylabs.buildo.R;
 import com.uniwaylabs.buildo.ToastMessages;
@@ -32,7 +33,7 @@ import com.uniwaylabs.buildo.ui.MainActivity;
 import com.uniwaylabs.buildo.ui.SplashActivity;
 
 
-public class SignInActivity extends AppCompatActivity {
+public class SignInActivity extends BaseAppCompactActivityJava {
     AppCompatButton signInButton;
     private GoogleSignInClient mGoogleSignInClient;
     private static final int RC_SIGN_IN = 1;

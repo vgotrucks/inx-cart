@@ -9,6 +9,7 @@ import android.widget.FrameLayout
 import android.widget.ImageButton
 import androidx.activity.result.contract.ActivityResultContract
 import androidx.appcompat.app.AppCompatActivity
+import com.uniwaylabs.buildo.BaseAppCompactActivity
 import com.uniwaylabs.buildo.R
 import com.uniwaylabs.buildo.ui.adminForms.ACTIVITY_DATA
 import com.uniwaylabs.buildo.ui.commans.ImageSliderFragment.ImageSliderFragment
@@ -17,7 +18,7 @@ import java.io.Serializable
 
 
 
-class FullScreenImageActivity: AppCompatActivity() {
+class FullScreenImageActivity: BaseAppCompactActivity() {
 
     private var imageContainer: FrameLayout? = null
     private var images: Array<String> = emptyArray()

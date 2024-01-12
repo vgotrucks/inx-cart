@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
+import com.uniwaylabs.buildo.BaseAppCompactActivityJava;
 import com.uniwaylabs.buildo.R;
 import com.uniwaylabs.buildo.ToastMessages;
 import com.uniwaylabs.buildo.ui.MainActivity;
@@ -21,7 +22,7 @@ import com.uniwaylabs.buildo.userPermissions.UserPermissionHandlerInterface;
 
 import java.lang.reflect.Field;
 
-public class GetStartedActivity extends AppCompatActivity{
+public class GetStartedActivity extends BaseAppCompactActivityJava {
 
     private ViewPager viewPager;
     private TabLayout tabLayout;

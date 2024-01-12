@@ -21,6 +21,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.airbnb.lottie.LottieAnimationView
+import com.uniwaylabs.buildo.BaseFragmentActivity
 import com.uniwaylabs.buildo.R
 import com.uniwaylabs.buildo.ToastMessages
 import com.uniwaylabs.buildo.firebaseDatabase.Database.AdminDB.AdminDatabase
@@ -29,7 +30,7 @@ import com.uniwaylabs.buildo.firebaseDatabase.StorageHandler.DatabaseStorageHand
 import com.uniwaylabs.buildo.utility.CustomToast
 
 
-open class TitleListActivityAdaptable : FragmentActivity(), TitleListAdapterInterface {
+open class TitleListActivityAdaptable : BaseFragmentActivity(), TitleListAdapterInterface {
 
     var et_title: EditText? = null
     private var resultCode: Int = 0

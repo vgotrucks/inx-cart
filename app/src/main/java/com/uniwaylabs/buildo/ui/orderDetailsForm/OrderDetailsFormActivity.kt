@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
 import com.airbnb.lottie.LottieAnimationView
 import com.uniwaylabs.buildo.BDDialogs.VTDialogViews
+import com.uniwaylabs.buildo.BaseAppCompactActivity
 import com.uniwaylabs.buildo.LocalDatabase.BDSharedPreferences
 import com.uniwaylabs.buildo.R
 import com.uniwaylabs.buildo.ToastMessages
@@ -33,7 +34,7 @@ import com.uniwaylabs.buildo.utility.LocationProviderInterface
 import java.util.Date
 
 
-class OrderDetailsFormActivity: AppCompatActivity() {
+class OrderDetailsFormActivity: BaseAppCompactActivity() {
 
 
     object OrderDetailsFormActivity{

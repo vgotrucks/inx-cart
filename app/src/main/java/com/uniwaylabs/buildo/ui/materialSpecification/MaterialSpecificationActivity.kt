@@ -2,6 +2,7 @@ package com.uniwaylabs.buildo.ui.materialSpecification
 
 import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
 import android.graphics.Paint
 import android.opengl.Visibility
 import android.os.Build
@@ -16,6 +17,7 @@ import androidx.activity.result.contract.ActivityResultContract
 import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.FragmentActivity
 import com.airbnb.lottie.LottieAnimationView
+import com.uniwaylabs.buildo.BaseFragmentActivity
 import com.uniwaylabs.buildo.LocalDatabase.BDSharedPreferences
 import com.uniwaylabs.buildo.R
 import com.uniwaylabs.buildo.firebaseDatabase.Database.AdminDB.AdminDatabase
@@ -31,7 +33,7 @@ import java.io.Serializable
 import java.util.Date
 
 @Suppress("DEPRECATION")
-class MaterialSpecificationActivity : FragmentActivity(), ImageSliderFragmentInterface{
+class MaterialSpecificationActivity : BaseFragmentActivity(), ImageSliderFragmentInterface{
 
     var textView: TextView? = null
     var imageView: ImageView? = null
@@ -180,5 +182,13 @@ class MaterialSpecificationActivity : FragmentActivity(), ImageSliderFragmentInt
 
     override fun onDeleteTap(position: Int?, url: String?) {
         TODO("Not yet implemented")
+    }
+
+
+    override fun attachBaseContext(newBase: Context?) {
+        super.attachBaseContext(newBase)
+        val config = Configuration(newBase?.resources?.configuration)
+        config.fontScale = 1.0f
+        applyOverrideConfiguration(config)
     }
 }
