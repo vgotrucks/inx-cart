@@ -74,13 +74,7 @@ class SplashActivity : BaseAppCompactActivity() {
             return
         }
 
-        UserDatabase<String>().getItemsObjectDataSnapshotWithoutEventListener(this, "",){
-                if(it.exists()){
-                    startSplash()
-                    return@getItemsObjectDataSnapshotWithoutEventListener
-                }
-               navigateToOTPVerification()
-        }
+        startSplash()
     }
 
     private fun navigateToOTPVerification(){
