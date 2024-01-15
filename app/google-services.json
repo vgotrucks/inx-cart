@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "451790774454-2v3f6ugfpkiq8ja0356p6dqemrdgitk0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.uniwaylabs.buildo",
+            "certificate_hash": "b71357996e5d1a432aca2d94831ff5bd302efb48"
+          }
+        },
+        {
           "client_id": "451790774454-om5so8iiaa0er4d8664a38lp5nbj9976.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
