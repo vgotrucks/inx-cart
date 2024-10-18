@@ -56,6 +56,7 @@ class HistoryListMaterialItemAdapter(
         var quantityTV: TextView? = null
         var totalAmountTV: TextView? = null
         var statusBadge: TextView? = null
+        var sizeType: TextView? = null
 
         init {
             view.setOnClickListener(this)
@@ -65,7 +66,7 @@ class HistoryListMaterialItemAdapter(
             quantityTV = view.findViewById(R.id.text_item_market_price)
             totalAmountTV = view.findViewById(R.id.text_item_uom)
             statusBadge = view.findViewById(R.id.status_badge_tv)
-
+            sizeType = view.findViewById(R.id.text_size_name)
 
             statusBadge?.setOnClickListener {
                 listItemInterface?.didTapChangeStatus(listItem)
@@ -79,6 +80,7 @@ class HistoryListMaterialItemAdapter(
                 .centerCrop()
             Glide.with(context).load(model.imageURLs?.first()).apply(options).into(imageView)
             text.text = model.itemName
+            sizeType?.text = model?.defaultSize ?: "NA"
             itemPriceTV?.text = "${model.itemPrice}"
             quantityTV?.text = "X ${model.quantity} = "
             val totalAmount = (model.itemPrice ?: 0.0)*(model.quantity ?: 0.0)

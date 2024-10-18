@@ -34,6 +34,8 @@ import kotlin.math.roundToInt
 
 public interface CartListItemMaterialInterface{
     fun onClickCartListItem(model: MaterialListItemModel?)
+    fun reloadList()
+    fun refreshList()
 }
 
 class CartListMaterialItemAdapter(
@@ -80,7 +82,9 @@ class CartListMaterialItemAdapter(
         var progressBar: LottieAnimationView? = null
         private var etQuantity: EditText? = null
         private var reference: DatabaseReference? = null
-
+        private var sizeType: TextView? = null
+        private var uomTV: TextView? = null
+        private var cachedUOM: String? = null
         init {
 
             text = view.findViewById(R.id.text_item_name)
@@ -91,6 +95,8 @@ class CartListMaterialItemAdapter(
             progressBar = view.findViewById(R.id.progressbarhistory)
             itemMarketPriceTV?.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
             etQuantity = view.findViewById(R.id.et_quantity)
+            sizeType = view.findViewById(R.id.text_size_name)
+            uomTV = view.findViewById(R.id.uom_text)
             text.setOnClickListener {
                 cartItemInterface?.onClickCartListItem(model)
             }
@@ -131,7 +137,7 @@ class CartListMaterialItemAdapter(
             }
 
             view.findViewById<ImageButton>(R.id.delete_button).setOnClickListener {
-              deleteFromDB(model?.path)
+              deleteFromDB(model?.cartListPath)
             }
         }
 
@@ -144,24 +150,60 @@ class CartListMaterialItemAdapter(
 
             Glide.with(context).load(model?.imageURLs?.first()).apply(options).into(imageView)
             imageView.scaleType = ImageView.ScaleType.CENTER_CROP
-
+            sizeType?.text = model?.defaultSize ?: "NA"
             text.text = model?.itemName
-            val itemPrice = getTotalPrice(model?.itemPrice, model?.quantity)
-            val marketPrice = getTotalPrice(model?.marketPrice, model?.quantity)
-            itemPriceTV?.text = "₹ $itemPrice"
-            itemMarketPriceTV?.text = "₹$marketPrice"
-            val offPrice = marketPrice - itemPrice
-            offPriceTV?.text = "₹$offPrice OFF"
-            val quantity = if (model?.isPartialQuantityAllowed == true) (model.quantity ?: 1.0) else (model?.quantity ?: 1.0).roundToInt()
+            uomTV?.text = model?.unitOfMeasurement ?: "Piece"
+            showLoading(false, "")
+            updateCritical(model)
+        }
+
+        private fun updateCritical(item: MaterialListItemModel?): Boolean{
+
+            val quantity = if (model?.isPartialQuantityAllowed == true) (model?.quantity ?: 1.0) else (model?.quantity ?: 1.0).roundToInt()
+            val itemPrice = model?.itemPrice
+            val marketPrice = model?.marketPrice
+
+            setPrice(model?.itemPrice,model?.marketPrice,model?.quantity)
             etQuantity?.setText("$quantity")
             if (model?.inStock == false){
                 offPriceTV?.text = "Out of stock"
                 itemPriceTV?.text = ""
                 itemMarketPriceTV?.text = ""
             }
-            showLoading(false, "")
+            this?.model?.inStock = item?.inStock
+            if (!item?.defaultSize.isNullOrEmpty()){
+                item?.sizes?.forEach {
+                    if(it.displayText.equals(model?.defaultSize)){
+
+                        val itemPrice = model?.itemPrice
+                        val marketPrice = model?.marketPrice
+                        setPrice(it.itemPrice, it.marketPrice, model?.quantity)
+                        this.model?.inStock = it.inStock
+                        if (itemPrice != it.itemPrice || marketPrice != it.marketPrice){
+                            return true
+                        }
+
+                    }
+                }
+            }
+
+            if (itemPrice != item?.itemPrice || marketPrice != item?.marketPrice){
+                return true
+            }
+            return false
         }
 
+        private fun setPrice(itemPrice: Double?, marketPrice: Double?, quantity: Double?){
+
+            val itemPricetText = getTotalPrice(itemPrice, quantity)
+            val marketPriceText = getTotalPrice(marketPrice,quantity)
+            itemPriceTV?.text = "₹ $itemPricetText"
+            itemMarketPriceTV?.text = "₹$marketPriceText"
+            val offPrice = marketPriceText - itemPricetText
+            offPriceTV?.text = "₹$offPrice OFF"
+            this.model?.itemPrice = itemPrice
+            this.model?.marketPrice = marketPrice
+        }
         private fun getTotalPrice(price: Double?, quantity: Double?): Double{
             return (price ?: 0.0) * (quantity ?: 1.0)
         }
@@ -176,16 +218,16 @@ class CartListMaterialItemAdapter(
         }
 
         private fun showLoading(show: Boolean, title: String){
-            progressBar?.visibility = if (show) View.VISIBLE else View.GONE
+           // progressBar?.visibility = if (show) View.VISIBLE else View.GONE
         }
 
         private fun saveQuantity(text: Double?){
 
-            if(model?.path.isNullOrEmpty()){
+            if(model?.cartListPath.isNullOrEmpty()){
                 return
             }
             model?.quantity = text
-            UserDatabase<MaterialListItemModel>().setDataToItemDatabase(context, "${DatabaseUrls.cart_list_path}/${model?.path ?: ""}",model, {})
+            UserDatabase<MaterialListItemModel>().setDataToItemDatabase(context, "${DatabaseUrls.cart_list_path}/${model?.cartListPath ?: ""}",model, {})
         }
 
         override fun onDataChange(snapshot: DataSnapshot) {
@@ -197,14 +239,23 @@ class CartListMaterialItemAdapter(
             }catch (e: Exception){ null }
 
 
+
             if (snapshot.value == null || mData?.id == null || mData?.inStock == false){
-                deleteFromDB(path = model?.path)
+                deleteFromDB(path = model?.cartListPath)
                 return@onDataChange
             }
 
             //All cart related data
             mData.quantity = model?.quantity
-            set(mData)
+            val needUpdate = updateCritical(mData)
+            if (this.model?.inStock == false){
+                deleteFromDB(path = model?.cartListPath)
+                return@onDataChange
+            }
+
+//            if (needUpdate){
+//                saveQuantity(model?.quantity)
+//            }
         }
 
         override fun onCancelled(error: DatabaseError) {

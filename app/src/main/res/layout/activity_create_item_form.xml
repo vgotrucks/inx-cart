@@ -243,6 +243,28 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen_50dp"
+                android:text="Item Size"
+                android:fontFamily="@font/open_sans"
+                android:textSize="18sp"
+                android:gravity="bottom"
+                android:layout_marginBottom="@dimen/dimen_8dp"
+                android:textColor="@color/black"/>
+
+            <EditText
+                android:id="@+id/item_size_et"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_50dp"
+                android:background="@drawable/box_line_round_corners"
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:maxLines="1"
+                android:paddingStart="@dimen/dimen_8dp"
+                android:imeOptions="actionDone" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_50dp"
                 android:text="Item UOM"
                 android:fontFamily="@font/open_sans"
                 android:textSize="18sp"
@@ -262,17 +284,58 @@
                 android:paddingStart="@dimen/dimen_8dp"
                 android:imeOptions="actionDone" />
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginStart="@dimen/dimen_4dp"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                android:layout_marginEnd="@dimen/dimen_4dp"
+                android:layout_marginBottom="@dimen/dimen_8dp">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_add"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:text="Add Size"
+                    android:textColor="@color/white"
+                    android:background="@color/systemGreenColor"
+                   />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_remove"
+                    android:layout_width="120dp"
+                    android:layout_height="40dp"
+                    android:text="Remove Size"
+                    android:textColor="@color/white"
+                    android:background="@color/redColor"
+                    android:layout_marginStart="16dp"/>
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/materials_recycle"
+                android:scrollbars="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/tv_select_size"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:scrollbarSize="@dimen/dimen_0dp"
+                />
+
             <Switch
                 android:id="@+id/quantity_measurement_switch"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:text="Is partial quantity allowed"
+                android:checked="false"
                 android:fontFamily="@font/open_sans"
+                android:text="Is partial quantity allowed"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                android:checked="false"
-                android:thumbTint="@color/blueColor"
-                />
+                android:thumbTint="@color/blueColor" />
 
             <Switch
                 android:id="@+id/in_stock_switch"
@@ -285,6 +348,18 @@
                 android:checked="true"
                 android:thumbTint="@color/blueColor"
                  />
+
+            <Switch
+                android:id="@+id/free_delivery_switch"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="Free Delivery"
+                android:fontFamily="@font/open_sans"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:checked="false"
+                android:thumbTint="@color/blueColor"
+                />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/add_image"

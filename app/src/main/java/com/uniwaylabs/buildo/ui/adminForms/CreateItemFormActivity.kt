@@ -16,7 +16,11 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContract
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.widget.AppCompatButton
+import androidx.core.view.children
+import androidx.core.view.get
 import androidx.fragment.app.FragmentActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.airbnb.lottie.LottieAnimationView
 import com.uniwaylabs.buildo.BDDialogs.VTDialogViews
 import com.uniwaylabs.buildo.BaseFragmentActivity
@@ -27,12 +31,14 @@ import com.uniwaylabs.buildo.firebaseDatabase.Database.AdminDB.AdminDatabase
 import com.uniwaylabs.buildo.firebaseDatabase.Database.UserDB.UserDatabase
 import com.uniwaylabs.buildo.firebaseDatabase.DatabaseModels.CategoryDataModel
 import com.uniwaylabs.buildo.firebaseDatabase.DatabaseModels.MaterialListItemModel
+import com.uniwaylabs.buildo.firebaseDatabase.DatabaseModels.SizeTypeItemDataModel
 import com.uniwaylabs.buildo.firebaseDatabase.DatabaseUrls.DatabaseUrls
 import com.uniwaylabs.buildo.firebaseDatabase.StorageHandler.DatabaseStorageHandler
 import com.uniwaylabs.buildo.ui.commans.ImageSliderFragment.ImageSliderFragment
 import com.uniwaylabs.buildo.ui.commans.ImageSliderFragment.ImageSliderFragmentInterface
 import com.uniwaylabs.buildo.ui.commans.ImageSliderFragment.SHOW_DELETE
 import com.uniwaylabs.buildo.ui.commans.ImageSliderFragment.SLIDING_IMAGES
+import com.uniwaylabs.buildo.ui.history.HistoryListItemAdapter
 import com.uniwaylabs.buildo.ui.materialSpecification.FullScreenImageActivity
 import com.uniwaylabs.buildo.utility.CustomToast
 import java.io.Serializable
@@ -56,7 +62,10 @@ class CreateItemFormActivity :  BaseFragmentActivity(), ImageSliderFragmentInter
     private var statusText: TextView? = null
     private var inStockSwitch: Switch? = null
     private var isPartialQuantityAllowed: Switch? = null
-
+    private var isFreeDeliverySwitch: Switch? = null
+    private var addSizeAdapter: AddSizeTypeItemAdapter? = null
+    private var sizeRecyclerView: RecyclerView? = null
+    private var itemSizeET: EditText? = null
     private val CATEGORY_RESULT_CODE = 101
     private val SUB_CATEGORY_RESULT_CODE = 102
     private val PINCODE_RESULT_CODE = 103
@@ -64,6 +73,8 @@ class CreateItemFormActivity :  BaseFragmentActivity(), ImageSliderFragmentInter
     private var uriProfile: Uri? = null
     private var imageUrls: ArrayList<String> = ArrayList()
     private var id: String = Date().time.toString()
+    private var sizeListItems: ArrayList<SizeTypeItemDataModel>? = null
+
     var fragment: ImageSliderFragment? = null
 
     var imagePickerLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
@@ -98,8 +109,20 @@ class CreateItemFormActivity :  BaseFragmentActivity(), ImageSliderFragmentInter
         val button = findViewById<AppCompatButton>(R.id.create_button)
         imageContainer = findViewById<View>(R.id.item_image_container) as FrameLayout
         inStockSwitch = findViewById(R.id.in_stock_switch)
+        isFreeDeliverySwitch = findViewById(R.id.free_delivery_switch)
         isPartialQuantityAllowed = findViewById(R.id.quantity_measurement_switch)
+        itemSizeET = findViewById(R.id.item_size_et)
         showLoading(false, "")
+
+        val recyclerView = findViewById<RecyclerView>(R.id.materials_recycle)
+        addSizeAdapter = AddSizeTypeItemAdapter(this, emptyArray())
+        val layoutManager = LinearLayoutManager(this)
+        layoutManager.orientation = LinearLayoutManager.VERTICAL
+        recyclerView.setHasFixedSize(true)
+        recyclerView.layoutManager = layoutManager
+        recyclerView.adapter = addSizeAdapter
+        sizeRecyclerView = recyclerView
+
         button.setOnClickListener {
             saveToDB()
         }
@@ -129,6 +152,43 @@ class CreateItemFormActivity :  BaseFragmentActivity(), ImageSliderFragmentInter
             alert.setCancelable(true)
             alert.show()
         }
+
+        findViewById<AppCompatButton>(R.id.btn_add).setOnClickListener {
+
+           if (recyclerView.childCount != 0 && getSizeData(recyclerView.get(recyclerView.childCount - 1)) == null){
+               return@setOnClickListener
+           }
+            sizeListItems = sizeRecyclerView?.children?.map { getSizeData(it) }?.filterNotNull()?.toMutableList() as ArrayList<SizeTypeItemDataModel>
+            addSizeAdapter?.addToLast(sizeListItems?.toTypedArray())
+        }
+
+        findViewById<AppCompatButton>(R.id.btn_remove).setOnClickListener {
+
+            if (this.sizeListItems.isNullOrEmpty()) return@setOnClickListener
+
+            var list = this.sizeListItems?.toMutableList()
+            list?.removeLast()
+            this.sizeListItems = list as ArrayList<SizeTypeItemDataModel>
+            addSizeAdapter?.updateListData(this.sizeListItems?.toTypedArray())
+        }
+    }
+
+    private fun getSizeData(item: View): SizeTypeItemDataModel?{
+        val sizeType = item.findViewById<EditText>(R.id.size_name_et).text.toString().trim()
+        val marketPrice = item.findViewById<EditText>(R.id.item_market_price_et).text.toString().trim()
+        val itemPrice = item.findViewById<EditText>(R.id.item_price_et).text.toString().trim()
+        val stock = item.findViewById<Switch>(R.id.quantity_measurement_switch).isChecked
+
+        if(sizeType.isEmpty() || marketPrice.isEmpty() || itemPrice.isEmpty()){
+            Toast.makeText(this, "Please fill mandatory fields", Toast.LENGTH_SHORT).show()
+            return null
+        }
+        if (marketPrice.toDouble() < itemPrice.toDouble()){
+            Toast.makeText(this, "Item price should be less than market price", Toast.LENGTH_SHORT).show()
+            return null
+        }
+
+        return SizeTypeItemDataModel(marketPrice.toDouble(), itemPrice.toDouble(), sizeType, stock)
     }
 
     private fun set(model: MaterialListItemModel?){
@@ -146,7 +206,11 @@ class CreateItemFormActivity :  BaseFragmentActivity(), ImageSliderFragmentInter
         inStockSwitch?.isSelected = model?.inStock ?: false
         isPartialQuantityAllowed?.isSelected = model?.isPartialQuantityAllowed ?: false
         imageUrls = model?.imageURLs ?: ArrayList()
+        itemSizeET?.setText(model?.defaultSize ?: "")
         id = model?.id ?: Date().time.toString()
+        sizeListItems = model?.sizes
+        addSizeAdapter?.updateListData(model?.sizes?.toTypedArray())
+        isFreeDeliverySwitch?.isChecked = model?.isFreeDelivery ?: false
     }
 
     class Contract: ActivityResultContract<MaterialListItemModel, String>(){
@@ -282,11 +346,15 @@ class CreateItemFormActivity :  BaseFragmentActivity(), ImageSliderFragmentInter
         model.itemPolicy = et_item_policy?.text.toString()
         model.id = id
         model.imageURLs = imageUrls
+        model.isFreeDelivery = isFreeDeliverySwitch?.isChecked ?: false
+        model.defaultSize = itemSizeET?.text.toString()
         model.pincode = pincode.toInt()
         model.inStock = inStockSwitch?.isChecked ?: true
+        model.isFreeDelivery = isFreeDeliverySwitch?.isChecked ?: false
         model.isPartialQuantityAllowed = isPartialQuantityAllowed?.isChecked ?: false
         val subCategoryPath = if (model.sub_category?.trim().isNullOrEmpty()) DatabaseUrls.material_items_path else "${DatabaseUrls.sub_categories_path}/${model.sub_category}/${DatabaseUrls.material_items_path}"
         model.path = "${model.pincode ?: Date().time}/${DatabaseUrls.categories_path}/${model.category}/$subCategoryPath/$id"
+        model.sizes = sizeRecyclerView?.children?.map { getSizeData(it) }?.filterNotNull()?.toMutableList() as ArrayList<SizeTypeItemDataModel>
         return model
     }
 

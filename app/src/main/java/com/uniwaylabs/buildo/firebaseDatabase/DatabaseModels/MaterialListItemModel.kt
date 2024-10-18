@@ -22,6 +22,10 @@ class MaterialListItemModel : Serializable {
     var quantity: Double? = null
     var isPartialQuantityAllowed: Boolean? = null
     var deliveryStatus: Int? = 0
+    var isFreeDelivery: Boolean? = false
+    var sizes: ArrayList<SizeTypeItemDataModel>? = null
+    var defaultSize: String? = null
+    var cartListPath: String? = null
     constructor() {}
 
 }

@@ -119,21 +119,73 @@
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/separator"
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="@color/white"
-        android:layout_below="@+id/linear_layout_v1"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"/>
+            <TextView
+                android:id="@+id/separator"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/light_grey"
+                android:layout_below="@+id/linear_layout_v1"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"/>
+
+            <TextView
+                android:id="@+id/tv_select_size"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/separator"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:textSize="16sp"
+                android:fontFamily="@font/open_sans"
+                android:text="Select Size"
+                android:gravity="center_vertical"
+                android:textColor="@color/black"
+                />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/materials_recycle"
+                android:scrollbars="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/tv_select_size"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:scrollbarSize="@dimen/dimen_0dp"
+                />
+
+            <TextView
+                android:id="@+id/delivery_text"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:textSize="18sp"
+                android:fontFamily="@font/open_sans"
+                android:text="Free Delivery"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:gravity="center"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/background_round_corners_lightgreen30dp"
+                android:layout_below="@+id/materials_recycle"
+                />
+
+
 
 
         <TextView
             android:id="@+id/tv_spec_title"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/separator"
+            android:layout_below="@+id/delivery_text"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="16dp"
             android:layout_marginStart="16dp"
@@ -264,20 +316,19 @@
         android:id="@+id/progressbarhistory"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:gravity="center"
-        app:lottie_autoPlay="true"
-        app:lottie_speed="1"
-        app:lottie_colorFilter="@color/appthemeColor"
         android:layout_centerInParent="true"
+        android:elevation="20dp"
+        android:gravity="center"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_colorFilter="@color/appthemeColor"
         app:lottie_fileName="add_to_cart.json"
         app:lottie_loop="true"
-        android:visibility="invisible"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:elevation="20dp"
-        />
+        app:lottie_speed="1" />
 
     <TextView
         android:id="@+id/text_view_result_h"

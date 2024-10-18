@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.SearchView
@@ -55,8 +56,19 @@ open class MaterialItemsListActivity : BaseAppCompactActivity(), MaterialListL3I
             onBackPressedDispatcher.onBackPressed()
         }
         setSearchChangeListener()
+
     }
 
+    override fun onStart() {
+        super.onStart()
+      dismissKeyboardOnSearch()
+    }
+
+    private fun dismissKeyboardOnSearch(){
+        val imm =
+            (searchView?.context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager)
+        imm.hideSoftInputFromWindow(searchView?.windowToken, 0)
+    }
 
     private fun setSearchChangeListener(){
 
@@ -68,6 +80,7 @@ open class MaterialItemsListActivity : BaseAppCompactActivity(), MaterialListL3I
 
             override fun onQueryTextSubmit(p0: String?): Boolean {
                 adapter?.applySearch(p0)
+                dismissKeyboardOnSearch()
                 return true
             }
         })

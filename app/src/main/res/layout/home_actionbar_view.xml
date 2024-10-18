@@ -63,9 +63,10 @@
         >
         <ImageView
             android:id="@+id/profile"
-            android:layout_width="@dimen/dimen_25dp"
+            android:layout_width="30dp"
+            android:elevation="7dp"
             android:layout_height="match_parent"
-            android:src="@drawable/ic_defaultprofile_pic"
+            android:src="@drawable/headphones_24"
             />
     </LinearLayout>
         </LinearLayout>

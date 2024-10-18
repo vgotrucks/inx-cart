@@ -62,11 +62,15 @@ class MaterialListL3ItemViewHolder(
 
     private fun addItemToCartDB(){
 
-        val path = model?.path
+        var path = model?.path
         if (path.isNullOrEmpty()) return
 
         showLoading(true, "")
         model?.quantity = 1.0
+        val size = model?.defaultSize ?: ""
+        size.replace(" ", "_")
+        path = "$path$size"
+        model?.cartListPath = path
         UserDatabase<String>().setDataToItemDatabase(context, "${DatabaseUrls.cart_list_path}/${path}",model){
             showLoading(false, "")
         }

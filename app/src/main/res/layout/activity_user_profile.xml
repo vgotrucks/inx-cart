@@ -49,7 +49,7 @@
         android:id="@+id/profile_img"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@drawable/ic_defaultprofile_pic"
+        android:src="@drawable/inx_logo_round"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/search_view_container"
         android:layout_marginTop="@dimen/dimen_50dp"
@@ -86,6 +86,72 @@
         android:layout_marginEnd="16dp"/>
 
     <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:fontFamily="@font/open_sans"
+        android:textColor="@color/navbarColor"
+        android:textSize="18sp"
+        android:text="Contact us on - "
+        android:gravity="center_vertical"
+        android:layout_marginBottom="8dp"
+        android:layout_above="@+id/whatsapp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"/>
+
+    <ImageView
+        android:id="@+id/whatsapp"
+        android:layout_width="50dp"
+        android:layout_height="@dimen/dimen_50dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/whatsapp"
+        android:layout_above="@+id/followus_tv"
+        android:layout_marginStart="16dp"
+        />
+
+    <TextView
+        android:id="@+id/followus_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:fontFamily="@font/open_sans"
+        android:textColor="@color/navbarColor"
+        android:textSize="18sp"
+        android:text="Follow us on - "
+        android:gravity="center_vertical"
+        android:layout_marginBottom="8dp"
+        android:layout_above="@+id/instabutton"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"/>
+
+    <ImageView
+        android:id="@+id/instabutton"
+        android:layout_width="50dp"
+        android:layout_height="@dimen/dimen_50dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/instagram"
+        android:layout_above="@+id/outlet_tv"
+        android:layout_marginStart="16dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:fontFamily="@font/open_sans"
+        android:textColor="@color/navbarColor"
+        android:textSize="18sp"
+        android:text="\@inx.cart"
+        android:gravity="center_vertical"
+        android:textStyle="italic"
+        android:layout_marginBottom="8dp"
+        android:layout_above="@+id/outlet_tv"
+        android:layout_toRightOf="@+id/instabutton"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"/>
+
+    <TextView
+        android:id="@+id/outlet_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"

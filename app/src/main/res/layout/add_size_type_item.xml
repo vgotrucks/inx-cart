@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    android:orientation="vertical"
+    android:background="@color/offWhiteColor"
+    android:layout_marginBottom="2dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_20dp"
+        android:text="Size Type"
+        android:fontFamily="@font/open_sans"
+        android:textSize="18sp"
+        android:gravity="bottom"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="@dimen/dimen_8dp"
+        android:textColor="@color/black"/>
+
+    <EditText
+        android:id="@+id/size_name_et"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/box_line_round_corners"
+        android:fontFamily="@font/open_sans"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:paddingStart="@dimen/dimen_8dp"
+        android:imeOptions="actionDone" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/dimen_10dp"
+        >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dimen_30dp"
+            android:text="Market Price"
+            android:fontFamily="@font/open_sans"
+            android:textSize="18sp"
+            android:gravity="bottom"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="@dimen/dimen_8dp"
+            android:textColor="@color/black"
+            android:layout_weight="1"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dimen_30dp"
+            android:text="Item Price"
+            android:fontFamily="@font/open_sans"
+            android:textSize="18sp"
+            android:gravity="bottom"
+            android:layout_marginBottom="@dimen/dimen_8dp"
+            android:textColor="@color/black"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/dimen_10dp"
+        >
+
+        <EditText
+            android:id="@+id/item_market_price_et"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dimen_50dp"
+            android:background="@drawable/box_line_round_corners"
+            android:fontFamily="@font/open_sans"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:maxLines="1"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/dimen_8dp"
+            android:imeOptions="actionDone"
+            android:inputType="numberDecimal"
+            android:layout_weight="1"/>
+
+        <EditText
+            android:id="@+id/item_price_et"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dimen_50dp"
+            android:background="@drawable/box_line_round_corners"
+            android:fontFamily="@font/open_sans"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:maxLines="1"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/dimen_8dp"
+            android:imeOptions="actionDone"
+            android:inputType="numberDecimal"
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <Switch
+        android:id="@+id/quantity_measurement_switch"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="In Stock"
+        android:fontFamily="@font/open_sans"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:checked="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/size_name_et"
+        android:thumbTint="@color/blueColor"
+        />
+
+</LinearLayout>

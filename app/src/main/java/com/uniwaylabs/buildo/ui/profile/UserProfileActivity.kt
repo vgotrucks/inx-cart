@@ -1,7 +1,11 @@
 package com.uniwaylabs.buildo.ui.profile
 
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.uniwaylabs.buildo.BaseAppCompactActivity
@@ -26,6 +30,26 @@ class UserProfileActivity: BaseAppCompactActivity() {
         mobileNumber = findViewById(R.id.mobile_number)
         findViewById<ImageButton>(R.id.backbutton).setOnClickListener {
             onBackPressedDispatcher.onBackPressed()
+        }
+        findViewById<ImageView>(R.id.whatsapp).setOnClickListener {
+            val url = "https://api.whatsapp.com/send?phone=917748920542&text=Hey! Please schedule at call with me"
+            try {
+                this.packageManager.getPackageInfo("com.whatsapp",PackageManager.GET_ACTIVITIES)
+                this.startActivity(Intent(Intent.ACTION_VIEW).apply { data = Uri.parse(url) })
+            }
+            catch (e: Exception){
+                this.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
+            }
+        }
+        findViewById<ImageView>(R.id.instabutton).setOnClickListener {
+            val url = "https://www.instagram.com/inx.cart"
+            try {
+                this.packageManager.getPackageInfo("com.instagram.android",PackageManager.GET_ACTIVITIES)
+                this.startActivity(Intent(Intent.ACTION_VIEW).apply { data = Uri.parse(url) })
+            }
+            catch (e: Exception){
+                this.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
+            }
         }
         fetchUserDetails()
         fetchAdminDetails()
